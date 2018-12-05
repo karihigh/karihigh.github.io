@@ -7,6 +7,8 @@ let spell;
 let headline;
 let numFrames = 30;
 let delta = [];
+let textSize = 40;
+
 
 function preload() {
   font = loadFont('data/Domine-Bold.ttf');
@@ -20,41 +22,43 @@ function setup() {
   pixelDensity(1);
   inc = 0.005;
 
-  // let indexone = spells.spells.length;
-  // let indextwo = articles.articles.length;
+  let indexone = spells.spells.length;
+  let indextwo = articles.articles.length;
 
-	// spell = font.textToPoints(
-  //   spells.spells[int(random(indexone))], 0, 0, 42, {
+	spell = font.textToPoints(
+    spells.spells[int(random(indexone))], 0, 0, textSize, {
+      sampleFactor: 0.4,
+    	simplifyThreshold: 0
+    }
+	 );
+
+  headline = font.textToPoints(
+    articles.articles[int(random(indextwo))].Title, 0, 0, textSize, {
+      sampleFactor: 0.4,
+    	simplifyThreshold: 0
+    }
+	);
+
+  // textAlign(CENTER);
+  // spell = font.textToPoints("Tulio" , 0, 0, 42, {
   //     sampleFactor: 0.3,
-  //   	simplifyThreshold: 0
-  //   }
-	//  );
+  //     simplifyThreshold: 0
+  //     });
   //
-  // headline = font.textToPoints(
-  //   articles.articles[int(random(indextwo))].Title, 0, 0, 42, {
+  // headline = font.textToPoints("Juan Carlos Bodoque" , 0, 0, 42, {
   //     sampleFactor: 0.3,
-  //   	simplifyThreshold: 0
-  //   }
-	// );
-
-  spell = font.textToPoints("Tulio" , 0, 0, 42, {
-      sampleFactor: 0.3,
-      simplifyThreshold: 0
-      });
-
-  headline = font.textToPoints("Juan Carlos Bodoque" , 0, 0, 42, {
-      sampleFactor: 0.3,
-      simplifyThreshold: 0
-    });
+  //     simplifyThreshold: 0
+  //   });
 
     //processing arrays to make them the same length
     diff = headline.length - spell.length;
+
     let aux = 0;
     for (var i = 0; i < diff; i++) {
       if(aux > spell.length){
         aux = 0;
       }
-      spell.push(spell[i]);
+      spell.push(spell.slice(i,1));
       aux++;
     }
 
@@ -64,7 +68,6 @@ function setup() {
       let distY = headline[i].y - spell[i].y;
       delta.push(createVector(distX/numFrames, distY/numFrames));
     }
-
 }
 
 function draw() {
@@ -91,24 +94,21 @@ function draw() {
   fill(255);
 
   // drawing words
-  translate(10, 100);
+  translate(100, windowHeight/2);
 
   for (let i = 0; i < spell.length; i++) {
-    // if(frameCount < numFrames){
-    //   spell[i].x += delta[i].x;
-    //   spell[i].y += delta[i].y;
-    // }
+    if(frameCount < numFrames){
+      spell[i].x += delta[i].x;
+      spell[i].y += delta[i].y;
+    }
 
     ellipse(spell[i].x, spell[i].y, 2, 2);
   }
 
   // translate(10, 100);
 
-  for (let i = 0; i < headline.length; i++) {
-    ellipse(headline[i].x, headline[i].y, 2, 2);
-  }
-
-console.log(spell[0]);
-console.log(headline[0]);
+  // for (let i = 0; i < headline.length; i++) {
+  //   ellipse(headline[i].x, headline[i].y, 2, 2);
+  // }
 
 }

@@ -1,23 +1,14 @@
 {
-	"description": "Common magic words or spells in pop culture.",
+	"description": "Personal collection of common magic words or spells in pop culture as defined by the author.",
 	"spells" : [
-		"Abrakadabra",
-		"Alakazam",
-    "Bibbidi Bobbidi Boo",
-    "Hocus Pocus",
-    "Supercalifragilisticexpialidocious",
-    "Expelliarmus",
-    "Expecto Patronum",
-    "Wingardium Leviosa",
-    "Abracadabra, abracadif",
-    "Abracadiggy, abracadack",
-    "Abracadoobie, abracadoo",
-    "Abracadabra, abracadunk",
-    "Double double, toil and trouble",
-    "Expelliarmus",
-    "Petrificus Totalus",
-    "Lumos Maximus",
-    "Propello Maxima Fianto Duri Repello Inimigotum",
-    "Peskipiksi Pesterno"
+		"Alakazam, alakazim, alkazalam",
+     "Bibbidi Bobbidi Boo, Bibbidi Bobbidi Boo",
+     "Twist the bones, and bend the back",
+     "Supercalifragilisticexpialidocious",
+     "Expecto Patronum, Petrificus Totalus",
+     "Wingardium Leviosa, Wingardium Leviosa",
+     "Double double, toil and trouble, double double",
+     "Lumos Maximus, Peskipiksi Pesterno",
+     "Propello Maxima Fianto Duri Repello"
 	]
 }
