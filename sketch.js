@@ -2,7 +2,11 @@ let font;
 let points;
 let data;
 let diff;
-let inc = 0.005;
+let inc;
+let spell;
+let headline;
+let numFrames = 30;
+let delta = [];
 
 function preload() {
   font = loadFont('data/Domine-Bold.ttf');
@@ -11,14 +15,13 @@ function preload() {
 }
 
 
-
-
 function setup() {
-  createCanvas(360, 640);
+  createCanvas(windowWidth, windowHeight);
   pixelDensity(1);
+  inc = 0.005;
 
-  let indexone = spells.spells.length;
-  let indextwo = articles.articles.length;
+  // let indexone = spells.spells.length;
+  // let indextwo = articles.articles.length;
 
 	// spell = font.textToPoints(
   //   spells.spells[int(random(indexone))], 0, 0, 42, {
@@ -44,10 +47,28 @@ function setup() {
       simplifyThreshold: 0
     });
 
+    //processing arrays to make them the same length
+    diff = headline.length - spell.length;
+    let aux = 0;
+    for (var i = 0; i < diff; i++) {
+      if(aux > spell.length){
+        aux = 0;
+      }
+      spell.push(spell[i]);
+      aux++;
+    }
+
+    // calculate distance array
+    for (var i = 0; i < headline.length; i++) {
+      let distX = headline[i].x - spell[i].x;
+      let distY = headline[i].y - spell[i].y;
+      delta.push(createVector(distX/numFrames, distY/numFrames));
+    }
+
 }
 
 function draw() {
-
+  // background perlin noise
     let yoff = 0;
     loadPixels();
     for (let y = 0; y < height; y++) {
@@ -69,24 +90,25 @@ function draw() {
   noStroke();
   fill(255);
 
-  diff = headline.length - spell.length;
-
-
-  // if (spell < headline) {
-  //   spell.push(headline - spell);
-  // } else { (spell > headline)
-  //   headline.push();
-  // }
-
+  // drawing words
   translate(10, 100);
 
   for (let i = 0; i < spell.length; i++) {
+    // if(frameCount < numFrames){
+    //   spell[i].x += delta[i].x;
+    //   spell[i].y += delta[i].y;
+    // }
+
     ellipse(spell[i].x, spell[i].y, 2, 2);
   }
 
-  translate(10, 300);
+  // translate(10, 100);
 
   for (let i = 0; i < headline.length; i++) {
     ellipse(headline[i].x, headline[i].y, 2, 2);
   }
+
+console.log(spell[0]);
+console.log(headline[0]);
+
 }
