@@ -6,7 +6,7 @@ function initMap() {
   map = new mapboxgl.Map({
     container: 'mymap',
     center: [23.81661519181763, -75.12463147310342],
-    zoom: 8,
+    zoom: 3,
     hash: true,
     style: 'mapbox://styles/karihigh/cka18d3rg0eyc1ipnchq3w3dy',
     // pitch: 60,
@@ -31,13 +31,10 @@ map.on('load', function(){
       c.className += ' yellow';
     } else if (f.properties.snapshot_description.includes("boat")) {
       c.className += ' pink';
-    } else if (f.properties.snapshot_description.includes("shipwreck")) {
-      c.className += ' gray';
     }
 
     var dano = document.createElement("div");
     dano.className = "dano";
-    dano.innerText = "hi i am dano";
 
     var shark = {lat: f.properties.latitude, lng: f.properties.longitude};
 
