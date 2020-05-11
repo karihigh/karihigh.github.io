@@ -75,7 +75,7 @@ img {
 .header h1 {
     font-family: 'Old Standard TT', serif;
     font-style: italic;
-    font-size: 70px;
+    font-size: 40px;
     letter-spacing: 0.15em;
     text-align: center;
 
@@ -83,23 +83,26 @@ img {
 
 .header h2 {
     font-family: 'Open Sans', sans-serif;
-    font-size: 26px;
+    font-size: 18px;
     font-weight: 100;
     text-align: center;
     margin-top: 10px;
-
 }
-
 
 .content {
   margin: 40px;
+}
+
+.legend {
+  position: absolute;
+  z-index: 1;
 }
 
 .footer {
   margin: 40px;
   font-family: 'Old Standard TT', serif;
   font-style: italic;
-  font-size: 35px;
+  font-size: 25px;
   letter-spacing: 0.05em;
   text-align: center;
 }
@@ -119,4 +122,27 @@ img {
 
 .footer a:hover {
   text-decoration: underline;
+}
+
+table {
+  width: 200px;
+  border-radius: 9px;
+  padding: 25px;
+  font-family: 'Old Standard TT', serif;
+  font-style: italic;
+  font-weight: 100;
+  font-size: 18px;
+  margin: 40px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.legend img {
+  width: 35px;
+}
+
+.legend h4 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  line-height: 1.4em;
 }
